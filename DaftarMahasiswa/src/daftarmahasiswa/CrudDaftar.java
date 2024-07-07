@@ -3,13 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package daftarmahasiswa;
-
+import java.sql.*;
+import java.text.Format;
+import javax.swing.*;
+import javax.swing.table.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import java.awt.HeadlessException;
+import java.sql.Connection;
+import java.sql.SQLException;
 /**
  *
  * @author ADITYA
  */
 public class CrudDaftar extends javax.swing.JFrame {
-
+public String tgl_lahir;
     /**
      * Creates new form CrudDaftar
      */
@@ -27,29 +36,29 @@ public class CrudDaftar extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
-        text8 = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        btnEdit = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        btnSimpan = new javax.swing.JButton();
+        tb_simpan = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        btnHapus = new javax.swing.JButton();
+        tb_hapus = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        btnExit = new javax.swing.JButton();
+        tb_exit = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        btnCari = new javax.swing.JButton();
-        text1 = new javax.swing.JTextField();
-        text7 = new javax.swing.JComboBox<>();
-        textCr = new javax.swing.JTextField();
-        text3 = new javax.swing.JTextField();
+        tb_cari = new javax.swing.JButton();
+        no = new javax.swing.JTextField();
+        agama = new javax.swing.JComboBox<>();
+        cari = new javax.swing.JTextField();
+        nama = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        text4 = new javax.swing.JComboBox<>();
+        gender = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        text5 = new javax.swing.JTextField();
-        text6 = new com.toedter.calendar.JDateChooser();
+        tempat = new javax.swing.JTextField();
+        tgl = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
-        text2 = new javax.swing.JComboBox<>();
+        jurusan = new javax.swing.JComboBox<>();
+        tb_edit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,25 +66,28 @@ public class CrudDaftar extends javax.swing.JFrame {
 
         jLabel4.setText("Nama");
 
-        btnEdit.setText("Edit");
-
         jLabel5.setText("Jenis Kelamin");
 
-        btnSimpan.setText("Simpan");
+        tb_simpan.setText("Simpan");
+        tb_simpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tb_simpanActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Tempat/Tgl. Lahir");
 
-        btnHapus.setText("Hapus");
+        tb_hapus.setText("Hapus");
 
         jLabel7.setText("Agama");
 
-        btnExit.setText("Exit");
+        tb_exit.setText("Exit");
 
         jLabel8.setText("Email");
 
-        btnCari.setText("Cari");
+        tb_cari.setText("Cari");
 
-        text7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Islam", "Kristen", "Katolik", "Hindu", "Budha" }));
+        agama.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Islam", "Kristen", "Katolik", "Hindu", "Budha" }));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -90,14 +102,27 @@ public class CrudDaftar extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        text4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-Laki", "Perempuan" }));
+        gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laki-Laki", "Perempuan" }));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("CRUD MAHASISWA");
 
+        tgl.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                tglPropertyChange(evt);
+            }
+        });
+
         jLabel2.setText("No. Pendaftaran");
 
-        text2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teknik Informatika - S1", "Sistem Informasi - S1", "Ilmu Komunikasi - S1", "Akutansi- S1", "Manajemen -S1", "Sastra Inggris - S1" }));
+        jurusan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teknik Informatika - S1", "Sistem Informasi - S1", "Ilmu Komunikasi - S1", "Akutansi- S1", "Manajemen -S1", "Sastra Inggris - S1" }));
+
+        tb_edit.setText("Edit");
+        tb_edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tb_editActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,17 +133,17 @@ public class CrudDaftar extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnSimpan)
+                        .addComponent(tb_simpan)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEdit)
+                        .addComponent(tb_edit)
                         .addGap(18, 18, 18)
-                        .addComponent(btnHapus)
+                        .addComponent(tb_hapus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnExit)
+                        .addComponent(tb_exit)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCari)
+                        .addComponent(tb_cari)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(textCr))
+                        .addComponent(cari))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -131,16 +156,16 @@ public class CrudDaftar extends javax.swing.JFrame {
                             .addComponent(jLabel8))
                         .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(text3)
-                            .addComponent(text1)
-                            .addComponent(text8, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                            .addComponent(text4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nama)
+                            .addComponent(no)
+                            .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                            .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(text5, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tempat, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(text6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(text2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(text7, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(tgl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jurusan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(agama, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(51, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -155,41 +180,41 @@ public class CrudDaftar extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(text1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(no, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(text2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jurusan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(text3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
-                    .addComponent(text4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel6)
-                        .addComponent(text5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(text6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tempat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tgl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(text7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(agama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
-                    .addComponent(text8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEdit)
-                    .addComponent(btnSimpan)
-                    .addComponent(btnHapus)
-                    .addComponent(btnExit)
-                    .addComponent(btnCari)
-                    .addComponent(textCr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tb_simpan)
+                    .addComponent(tb_hapus)
+                    .addComponent(tb_exit)
+                    .addComponent(tb_cari)
+                    .addComponent(cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tb_edit))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -198,6 +223,99 @@ public class CrudDaftar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tglPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tglPropertyChange
+        // TODO add your handling code here:
+        if (tgl.getDate()!=null){
+            SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+            tgl_lahir=format.format (tgl.getDate());
+        }
+    }//GEN-LAST:event_tglPropertyChange
+
+    private void tb_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_simpanActionPerformed
+        // TODO add your handling code here:
+        try{
+            String sql="insert into tbdata values('"
+                    +no.getText()+"','"
+                    +jurusan.getSelectedItem()+"','"
+                    +nama.getText()+"','"
+                    +gender.getSelectedItem()+"','"
+                    +tempat.getText()+"','"
+                    +tgl_lahir+"','"
+                    +agama.getSelectedItem()+"','"
+                    +email.getText()+"')";
+                 java.sql.Connection conn=(java.sql.Connection)daftarmahasiswa.Koneksi.koneksiDB();
+            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Berhasil disimpan");
+            tampil_data();
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Gagal disimpan");
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_tb_simpanActionPerformed
+
+    private void tb_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_editActionPerformed
+        // TODO add your handling code here:
+        try {
+            java.sql.Connection conn = (java.sql.Connection) daftarmahasiswa.Koneksi.koneksiDB();
+            String sql = "UPDATE tbdata SET nama=?, gender=?, tempat=?, tgl=?, alamat=?, hp=? WHERE no=?";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+    
+    // Mengatur nilai untuk parameter
+            pst.setString(1, (String) jurusan.getSelectedItem());
+            pst.setString(2, nama.getText());
+            pst.setString(3, (String) gender.getSelectedItem());
+            pst.setString(4, tempat.getText());
+            pst.setString(5, tgl_lahir);
+            pst.setString(6, (String) agama.getSelectedItem());
+            pst.setString(7, email.getText());
+            pst.setInt(8, Integer.parseInt(no.getText()));
+    
+    // Menjalankan perintah update
+            pst.executeUpdate();
+    
+            JOptionPane.showMessageDialog(null, "Data berhasil di Koreksi");
+            tampil_data();
+            } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Proses Edit data Gagal");
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_tb_editActionPerformed
+    
+    
+    public void tampil_data(){
+        DefaultTableModel tabel=new DefaultTableModel();
+        tabel.addColumn("NO PENDAFTARAN");
+        tabel.addColumn("PROGRAM STUDI");
+        tabel.addColumn("NAMA");
+        tabel.addColumn("GENDER");
+        tabel.addColumn("TEMPAT");
+        tabel.addColumn("TGL LAHIR");
+        tabel.addColumn("AGAMA");
+        tabel.addColumn("EMAIL");
+    try {
+    java.sql.Connection conn = (java.sql.Connection) daftarmahasiswa. Koneksi.koneksiDB();
+    String sql = "select * from tbdata";
+    java.sql.PreparedStatement pst= conn.prepareStatement ( sql);
+    ResultSet rs = pst.executeQuery( sql);
+      while(rs.next())
+        {
+        tabel.addRow(new Object[]{
+            rs.getString(1),
+            rs.getString(2),
+            rs.getString(3),
+            rs.getString(4),
+            rs.getString(5),
+            rs.getString(6),
+            rs.getString(7),
+            rs.getString(8)});
+        }
+        jTable1.setModel(tabel);
+        }
+    catch (Exception e){
+    }
+}
     /**
      * @param args the command line arguments
      */
@@ -234,11 +352,10 @@ public class CrudDaftar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCari;
-    private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnHapus;
-    private javax.swing.JButton btnSimpan;
+    private javax.swing.JComboBox<String> agama;
+    private javax.swing.JTextField cari;
+    private javax.swing.JTextField email;
+    private javax.swing.JComboBox<String> gender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -249,14 +366,15 @@ public class CrudDaftar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField text1;
-    private javax.swing.JComboBox<String> text2;
-    private javax.swing.JTextField text3;
-    private javax.swing.JComboBox<String> text4;
-    private javax.swing.JTextField text5;
-    private com.toedter.calendar.JDateChooser text6;
-    private javax.swing.JComboBox<String> text7;
-    private javax.swing.JTextField text8;
-    private javax.swing.JTextField textCr;
+    private javax.swing.JComboBox<String> jurusan;
+    private javax.swing.JTextField nama;
+    private javax.swing.JTextField no;
+    private javax.swing.JButton tb_cari;
+    private javax.swing.JButton tb_edit;
+    private javax.swing.JButton tb_exit;
+    private javax.swing.JButton tb_hapus;
+    private javax.swing.JButton tb_simpan;
+    private javax.swing.JTextField tempat;
+    private com.toedter.calendar.JDateChooser tgl;
     // End of variables declaration//GEN-END:variables
 }
