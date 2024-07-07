@@ -228,6 +228,25 @@ public String tgl_lahir;
         if (tgl.getDate()!=null){
             SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
             tgl_lahir=format.format (tgl.getDate());
+        }try{
+            String sql="insert into tbdata values('"
+                    +no.getText()+"','"
+                    +jurusan.getSelectedItem()+"','"
+                    +nama.getText()+"','"
+                    +gender.getSelectedItem()+"','"
+                    +tempat.getText()+"','"
+                    +tgl_lahir+"','"
+                    +agama.getSelectedItem()+"','"
+                    +email.getText()+"')";
+                 java.sql.Connection conn=(java.sql.Connection)daftarmahasiswa.Koneksi.koneksiDB();
+            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Berhasil disimpan");
+            tampil_data();
+        }
+        catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Gagal disimpan");
+            System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_tglPropertyChange
 
