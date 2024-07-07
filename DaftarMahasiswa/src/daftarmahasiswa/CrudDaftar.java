@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package daftarmahasiswa;
+
 import java.sql.*;
 import java.text.Format;
 import javax.swing.*;
@@ -13,12 +14,15 @@ import javax.swing.JOptionPane;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.SQLException;
+
 /**
  *
  * @author ADITYA
  */
 public class CrudDaftar extends javax.swing.JFrame {
-public String tgl_lahir;
+
+    public String tgl_lahir;
+
     /**
      * Creates new form CrudDaftar
      */
@@ -78,6 +82,11 @@ public String tgl_lahir;
         jLabel6.setText("Tempat/Tgl. Lahir");
 
         tb_hapus.setText("Hapus");
+        tb_hapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tb_hapusActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Agama");
 
@@ -91,6 +100,11 @@ public String tgl_lahir;
         jLabel8.setText("Email");
 
         tb_cari.setText("Cari");
+        tb_cari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tb_cariActionPerformed(evt);
+            }
+        });
 
         agama.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Islam", "Kristen", "Katolik", "Hindu", "Budha" }));
 
@@ -230,50 +244,31 @@ public String tgl_lahir;
 
     private void tglPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tglPropertyChange
         // TODO add your handling code here:
-        if (tgl.getDate()!=null){
-            SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
-            tgl_lahir=format.format (tgl.getDate());
-        }try{
-            String sql="insert into tbdata values('"
-                    +no.getText()+"','"
-                    +jurusan.getSelectedItem()+"','"
-                    +nama.getText()+"','"
-                    +gender.getSelectedItem()+"','"
-                    +tempat.getText()+"','"
-                    +tgl_lahir+"','"
-                    +agama.getSelectedItem()+"','"
-                    +email.getText()+"')";
-                 java.sql.Connection conn=(java.sql.Connection)daftarmahasiswa.Koneksi.koneksiDB();
-            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Berhasil disimpan");
-            tampil_data();
+        if (tgl.getDate() != null) {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            tgl_lahir = format.format(tgl.getDate());
         }
-        catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Gagal disimpan");
-            System.out.println(e.getMessage());
-        }
+        
     }//GEN-LAST:event_tglPropertyChange
 
     private void tb_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_simpanActionPerformed
         // TODO add your handling code here:
-        try{
-            String sql="insert into tbdata values('"
-                    +no.getText()+"','"
-                    +jurusan.getSelectedItem()+"','"
-                    +nama.getText()+"','"
-                    +gender.getSelectedItem()+"','"
-                    +tempat.getText()+"','"
-                    +tgl_lahir+"','"
-                    +agama.getSelectedItem()+"','"
-                    +email.getText()+"')";
-                 java.sql.Connection conn=(java.sql.Connection)daftarmahasiswa.Koneksi.koneksiDB();
-            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+        try {
+            String sql = "insert into tbdata values('"
+                    + no.getText() + "','"
+                    + jurusan.getSelectedItem() + "','"
+                    + nama.getText() + "','"
+                    + gender.getSelectedItem() + "','"
+                    + tempat.getText() + "','"
+                    + tgl_lahir + "','"
+                    + agama.getSelectedItem() + "','"
+                    + email.getText() + "')";
+            java.sql.Connection conn = (java.sql.Connection) daftarmahasiswa.Koneksi.koneksiDB();
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.execute();
             JOptionPane.showMessageDialog(null, "Berhasil disimpan");
             tampil_data();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Gagal disimpan");
             System.out.println(e.getMessage());
         }
@@ -282,11 +277,12 @@ public String tgl_lahir;
     private void tb_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_editActionPerformed
         // TODO add your handling code here:
         try {
+            
             java.sql.Connection conn = (java.sql.Connection) daftarmahasiswa.Koneksi.koneksiDB();
-            String sql = "UPDATE tbdata SET nama=?, gender=?, tempat=?, tgl=?, alamat=?, hp=? WHERE no=?";
+            String sql = "UPDATE tbdata SET jurusan=?, nama=?, gender=?, tempat=?, tgl=?, agama=?, email=? WHERE no=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-    
-    // Mengatur nilai untuk parameter
+
+            // Mengatur nilai untuk parameter
             pst.setString(1, (String) jurusan.getSelectedItem());
             pst.setString(2, nama.getText());
             pst.setString(3, (String) gender.getSelectedItem());
@@ -295,13 +291,13 @@ public String tgl_lahir;
             pst.setString(6, (String) agama.getSelectedItem());
             pst.setString(7, email.getText());
             pst.setInt(8, Integer.parseInt(no.getText()));
-    
-    // Menjalankan perintah update
+
+            // Menjalankan perintah update
             pst.executeUpdate();
-    
+
             JOptionPane.showMessageDialog(null, "Data berhasil di Koreksi");
-            tampil_data();git i
-            } catch (Exception e) {
+            tampil_data();
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Proses Edit data Gagal");
             System.out.println(e.getMessage());
         }
@@ -311,10 +307,37 @@ public String tgl_lahir;
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_tb_exitActionPerformed
-    
-    
-    public void tampil_data(){
-        DefaultTableModel tabel=new DefaultTableModel();
+
+    private void tb_cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_cariActionPerformed
+        try {
+            java.sql.Connection conn = (java.sql.Connection) daftarmahasiswa.Koneksi.koneksiDB();
+            String sql = "Select * from tbdata where no='" + cari.getText() + "' or nama='" + cari.getText() + "'";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            if (rs.next()) {
+                no.setText(rs.getString(1));
+                jurusan.setSelectedItem(rs.getString(2));
+                nama.setText(rs.getString(3));
+                gender.setSelectedItem(rs.getString(4));
+                tempat.setText(rs.getString(5));
+                tgl.setDate(rs.getDate(6));
+                agama.setSelectedItem(rs.getString(7));
+                email.setText(rs.getString(8));
+                JOptionPane.showMessageDialog(null, "Data tbdata : "
+                        + cari.getText() + " ditemukan, Apakah Anda Ingin Mengedit atau Menghapus?");
+            }
+        } catch (Exception e) {
+        }
+        cari.requestFocus();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tb_cariActionPerformed
+
+    private void tb_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_hapusActionPerformed
+                // TODO add your handling code here:
+    }//GEN-LAST:event_tb_hapusActionPerformed
+
+    public void tampil_data() {
+        DefaultTableModel tabel = new DefaultTableModel();
         tabel.addColumn("NO PENDAFTARAN");
         tabel.addColumn("PROGRAM STUDI");
         tabel.addColumn("NAMA");
@@ -323,28 +346,27 @@ public String tgl_lahir;
         tabel.addColumn("TGL LAHIR");
         tabel.addColumn("AGAMA");
         tabel.addColumn("EMAIL");
-    try {
-    java.sql.Connection conn = (java.sql.Connection) daftarmahasiswa. Koneksi.koneksiDB();
-    String sql = "select * from tbdata";
-    java.sql.PreparedStatement pst= conn.prepareStatement ( sql);
-    ResultSet rs = pst.executeQuery( sql);
-      while(rs.next())
-        {
-        tabel.addRow(new Object[]{
-            rs.getString(1),
-            rs.getString(2),
-            rs.getString(3),
-            rs.getString(4),
-            rs.getString(5),
-            rs.getString(6),
-            rs.getString(7),
-            rs.getString(8)});
+        try {
+            java.sql.Connection conn = (java.sql.Connection) daftarmahasiswa.Koneksi.koneksiDB();
+            String sql = "select * from tbdata";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            ResultSet rs = pst.executeQuery(sql);
+            while (rs.next()) {
+                tabel.addRow(new Object[]{
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+                    rs.getString(7),
+                    rs.getString(8)});
+            }
+            jTable1.setModel(tabel);
+        } catch (Exception e) {
         }
-        jTable1.setModel(tabel);
-        }
-    catch (Exception e){
     }
-}
+
     /**
      * @param args the command line arguments
      */
