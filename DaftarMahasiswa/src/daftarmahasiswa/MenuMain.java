@@ -42,6 +42,9 @@ public class MenuMain extends javax.swing.JFrame {
         menuBar3 = new java.awt.MenuBar();
         menu5 = new java.awt.Menu();
         menu6 = new java.awt.Menu();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -49,8 +52,14 @@ public class MenuMain extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         Daftar = new javax.swing.JMenuItem();
         Crud = new javax.swing.JMenuItem();
+        jexit = new javax.swing.JMenuItem();
 
         menu1.setLabel("File");
+        menu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu1ActionPerformed(evt);
+            }
+        });
         menuBar1.add(menu1);
 
         menu2.setLabel("Edit");
@@ -67,6 +76,12 @@ public class MenuMain extends javax.swing.JFrame {
 
         menu6.setLabel("Edit");
         menuBar3.add(menu6);
+
+        jMenu2.setText("File");
+        jMenuBar2.add(jMenu2);
+
+        jMenu3.setText("Edit");
+        jMenuBar2.add(jMenu3);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,6 +111,14 @@ public class MenuMain extends javax.swing.JFrame {
             }
         });
         jMenu1.add(Crud);
+
+        jexit.setText("Keluar");
+        jexit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jexitActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jexit);
 
         jMenuBar1.add(jMenu1);
 
@@ -143,6 +166,15 @@ public class MenuMain extends javax.swing.JFrame {
         new CrudDaftar().setVisible(true);
     }//GEN-LAST:event_CrudActionPerformed
 
+    private void jexitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jexitActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jexitActionPerformed
+
+    private void menu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menu1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -185,7 +217,11 @@ public class MenuMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jexit;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
     private java.awt.Menu menu3;

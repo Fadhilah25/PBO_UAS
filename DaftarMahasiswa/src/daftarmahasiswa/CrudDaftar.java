@@ -248,7 +248,7 @@ public class CrudDaftar extends javax.swing.JFrame {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             tgl_lahir = format.format(tgl.getDate());
         }
-        
+
     }//GEN-LAST:event_tglPropertyChange
 
     private void tb_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_simpanActionPerformed
@@ -277,7 +277,7 @@ public class CrudDaftar extends javax.swing.JFrame {
     private void tb_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_editActionPerformed
         // TODO add your handling code here:
         try {
-            
+
             java.sql.Connection conn = (java.sql.Connection) daftarmahasiswa.Koneksi.koneksiDB();
             String sql = "UPDATE tbdata SET jurusan=?, nama=?, gender=?, tempat=?, tgl=?, agama=?, email=? WHERE no=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
@@ -333,7 +333,20 @@ public class CrudDaftar extends javax.swing.JFrame {
     }//GEN-LAST:event_tb_cariActionPerformed
 
     private void tb_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_hapusActionPerformed
-                // TODO add your handling code here:
+        // TODO add your handling code here:
+
+        try {
+            java.sql.Connection conn = (java.sql.Connection) daftarmahasiswa.Koneksi.koneksiDB();
+            String sql = "delete from tbdata where no='" + no.getText() + "' ";
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Data berhasil di hapus");
+            tampil_data();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Proses Penghapusan Gagal");
+            System.out.println(e.getMessage());
+        }
+
     }//GEN-LAST:event_tb_hapusActionPerformed
 
     public void tampil_data() {
