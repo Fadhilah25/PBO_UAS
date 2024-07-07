@@ -90,6 +90,11 @@ public class MenuMain extends javax.swing.JFrame {
         jMenu1.add(Daftar);
 
         Crud.setText("Crud Mahasiswa");
+        Crud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrudActionPerformed(evt);
+            }
+        });
         jMenu1.add(Crud);
 
         jMenuBar1.add(jMenu1);
@@ -130,8 +135,13 @@ public class MenuMain extends javax.swing.JFrame {
 
     private void DaftarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DaftarActionPerformed
         // TODO add your handling code here:
-        
+        new FromDaftar().setVisible(true);
     }//GEN-LAST:event_DaftarActionPerformed
+
+    private void CrudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CrudActionPerformed
+        // TODO add your handling code here:
+        new CrudDaftar().setVisible(true);
+    }//GEN-LAST:event_CrudActionPerformed
 
     /**
      * @param args the command line arguments

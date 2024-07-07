@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
  * @author ADITYA
  */
 public class FromDaftar extends javax.swing.JFrame {
+
     public String tgl_lahir;
 
     /**
@@ -76,6 +77,11 @@ public class FromDaftar extends javax.swing.JFrame {
         agama.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Islam", "Kristen", "Katolik", "Hindu", "Budha" }));
 
         btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Nama");
 
@@ -175,22 +181,21 @@ public class FromDaftar extends javax.swing.JFrame {
 
     private void btnSelesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelesaiActionPerformed
         // TODO add your handling code here:
-        try{
-            String sql="insert into tbdata values('"
-                    +no.getText()+"','"
-                    +jurusan.getSelectedItem()+"','"
-                    +nama.getText()+"','"
-                    +gender.getSelectedItem()+"','"
-                    +tempat.getText()+"','"
-                    +tgl_lahir+"','"
-                    +agama.getSelectedItem()+"','"
-                    +email.getText()+"')";
-                 java.sql.Connection conn=(java.sql.Connection)daftarmahasiswa.Koneksi.koneksiDB();
-            java.sql.PreparedStatement pst=conn.prepareStatement(sql);
+        try {
+            String sql = "insert into tbdata values('"
+                    + no.getText() + "','"
+                    + jurusan.getSelectedItem() + "','"
+                    + nama.getText() + "','"
+                    + gender.getSelectedItem() + "','"
+                    + tempat.getText() + "','"
+                    + tgl_lahir + "','"
+                    + agama.getSelectedItem() + "','"
+                    + email.getText() + "')";
+            java.sql.Connection conn = (java.sql.Connection) daftarmahasiswa.Koneksi.koneksiDB();
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
             pst.execute();
             JOptionPane.showMessageDialog(null, "Berhasil disimpan");
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Gagal disimpan");
             System.out.println(e.getMessage());
         }
@@ -198,16 +203,20 @@ public class FromDaftar extends javax.swing.JFrame {
 
     private void tglPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_tglPropertyChange
         // TODO add your handling code here:
-        if (tgl.getDate()!=null){
-            SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
-            tgl_lahir=format.format (tgl.getDate());
+        if (tgl.getDate() != null) {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            tgl_lahir = format.format(tgl.getDate());
         }
     }//GEN-LAST:event_tglPropertyChange
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

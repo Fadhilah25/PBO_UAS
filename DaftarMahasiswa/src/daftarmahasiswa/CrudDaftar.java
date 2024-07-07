@@ -82,6 +82,11 @@ public String tgl_lahir;
         jLabel7.setText("Agama");
 
         tb_exit.setText("Exit");
+        tb_exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tb_exitActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Email");
 
@@ -158,7 +163,7 @@ public String tgl_lahir;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(nama)
                             .addComponent(no)
-                            .addComponent(email, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                            .addComponent(email)
                             .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(tempat, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,12 +300,17 @@ public String tgl_lahir;
             pst.executeUpdate();
     
             JOptionPane.showMessageDialog(null, "Data berhasil di Koreksi");
-            tampil_data();
+            tampil_data();git i
             } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Proses Edit data Gagal");
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_tb_editActionPerformed
+
+    private void tb_exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_exitActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_tb_exitActionPerformed
     
     
     public void tampil_data(){
