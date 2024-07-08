@@ -51,7 +51,9 @@ public class MenuMain extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         Daftar = new javax.swing.JMenuItem();
+        daftarmatkul = new javax.swing.JMenuItem();
         Crud = new javax.swing.JMenuItem();
+        crudmatkul = new javax.swing.JMenuItem();
         jexit = new javax.swing.JMenuItem();
 
         menu1.setLabel("File");
@@ -104,6 +106,14 @@ public class MenuMain extends javax.swing.JFrame {
         });
         jMenu1.add(Daftar);
 
+        daftarmatkul.setText("Pendaftaran Matakuliah");
+        daftarmatkul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                daftarmatkulActionPerformed(evt);
+            }
+        });
+        jMenu1.add(daftarmatkul);
+
         Crud.setText("Crud Mahasiswa");
         Crud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,6 +121,14 @@ public class MenuMain extends javax.swing.JFrame {
             }
         });
         jMenu1.add(Crud);
+
+        crudmatkul.setText("Crud Matakuliah");
+        crudmatkul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crudmatkulActionPerformed(evt);
+            }
+        });
+        jMenu1.add(crudmatkul);
 
         jexit.setText("Keluar");
         jexit.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +193,16 @@ public class MenuMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_menu1ActionPerformed
 
+    private void daftarmatkulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daftarmatkulActionPerformed
+        // TODO add your handling code here:
+        new FormMatkul().setVisible(true);
+    }//GEN-LAST:event_daftarmatkulActionPerformed
+
+    private void crudmatkulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudmatkulActionPerformed
+        // TODO add your handling code here:
+        new CrudMatkul().setVisible(true);
+    }//GEN-LAST:event_crudmatkulActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -213,6 +241,8 @@ public class MenuMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Crud;
     private javax.swing.JMenuItem Daftar;
+    private javax.swing.JMenuItem crudmatkul;
+    private javax.swing.JMenuItem daftarmatkul;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

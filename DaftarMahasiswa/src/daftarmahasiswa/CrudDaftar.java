@@ -106,6 +106,12 @@ public class CrudDaftar extends javax.swing.JFrame {
             }
         });
 
+        no.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                noActionPerformed(evt);
+            }
+        });
+
         agama.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Islam", "Kristen", "Katolik", "Hindu", "Budha" }));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -329,7 +335,6 @@ public class CrudDaftar extends javax.swing.JFrame {
         } catch (Exception e) {
         }
         cari.requestFocus();
-        // TODO add your handling code here:
     }//GEN-LAST:event_tb_cariActionPerformed
 
     private void tb_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_hapusActionPerformed
@@ -348,6 +353,10 @@ public class CrudDaftar extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_tb_hapusActionPerformed
+
+    private void noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_noActionPerformed
 
     public void tampil_data() {
         DefaultTableModel tabel = new DefaultTableModel();
