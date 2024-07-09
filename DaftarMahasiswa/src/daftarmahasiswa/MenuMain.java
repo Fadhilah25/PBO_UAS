@@ -52,8 +52,10 @@ public class MenuMain extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         Daftar = new javax.swing.JMenuItem();
         daftarmatkul = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         Crud = new javax.swing.JMenuItem();
         crudmatkul = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jexit = new javax.swing.JMenuItem();
 
         menu1.setLabel("File");
@@ -114,6 +116,9 @@ public class MenuMain extends javax.swing.JFrame {
         });
         jMenu1.add(daftarmatkul);
 
+        jMenuItem1.setText("FromMahasiswa");
+        jMenu1.add(jMenuItem1);
+
         Crud.setText("Crud Mahasiswa");
         Crud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +134,14 @@ public class MenuMain extends javax.swing.JFrame {
             }
         });
         jMenu1.add(crudmatkul);
+
+        jMenuItem2.setText("CrudMahasiswa");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
 
         jexit.setText("Keluar");
         jexit.addActionListener(new java.awt.event.ActionListener() {
@@ -203,6 +216,10 @@ public class MenuMain extends javax.swing.JFrame {
         new CrudMatkul().setVisible(true);
     }//GEN-LAST:event_crudmatkulActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -251,6 +268,8 @@ public class MenuMain extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jexit;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;
