@@ -52,10 +52,10 @@ public class MenuMain extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         Daftar = new javax.swing.JMenuItem();
         daftarmatkul = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        formpendaftaran = new javax.swing.JMenuItem();
         Crud = new javax.swing.JMenuItem();
         crudmatkul = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        crudpendaftaran = new javax.swing.JMenuItem();
         jexit = new javax.swing.JMenuItem();
 
         menu1.setLabel("File");
@@ -116,8 +116,13 @@ public class MenuMain extends javax.swing.JFrame {
         });
         jMenu1.add(daftarmatkul);
 
-        jMenuItem1.setText("FromMahasiswa");
-        jMenu1.add(jMenuItem1);
+        formpendaftaran.setText("Form Pendaftaran");
+        formpendaftaran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                formpendaftaranActionPerformed(evt);
+            }
+        });
+        jMenu1.add(formpendaftaran);
 
         Crud.setText("Crud Mahasiswa");
         Crud.addActionListener(new java.awt.event.ActionListener() {
@@ -135,13 +140,13 @@ public class MenuMain extends javax.swing.JFrame {
         });
         jMenu1.add(crudmatkul);
 
-        jMenuItem2.setText("CrudMahasiswa");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        crudpendaftaran.setText("Crud Pendaftaran");
+        crudpendaftaran.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                crudpendaftaranActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(crudpendaftaran);
 
         jexit.setText("Keluar");
         jexit.addActionListener(new java.awt.event.ActionListener() {
@@ -216,9 +221,15 @@ public class MenuMain extends javax.swing.JFrame {
         new CrudMatkul().setVisible(true);
     }//GEN-LAST:event_crudmatkulActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void crudpendaftaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudpendaftaranActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+        new CrudMahasiswa().setVisible(true);
+    }//GEN-LAST:event_crudpendaftaranActionPerformed
+
+    private void formpendaftaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formpendaftaranActionPerformed
+        // TODO add your handling code here:
+        new FromMahasiswa().setVisible(true);
+    }//GEN-LAST:event_formpendaftaranActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,7 +270,9 @@ public class MenuMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem Crud;
     private javax.swing.JMenuItem Daftar;
     private javax.swing.JMenuItem crudmatkul;
+    private javax.swing.JMenuItem crudpendaftaran;
     private javax.swing.JMenuItem daftarmatkul;
+    private javax.swing.JMenuItem formpendaftaran;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -268,8 +281,6 @@ public class MenuMain extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jexit;
     private java.awt.Menu menu1;
     private java.awt.Menu menu2;

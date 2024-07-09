@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package daftarmahasiswa;
+
 import java.sql.*;
 import java.text.Format;
 import javax.swing.*;
@@ -13,6 +14,7 @@ import javax.swing.JOptionPane;
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.SQLException;
+
 /**
  *
  * @author Adive
@@ -35,7 +37,6 @@ public class CrudMahasiswa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField4 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         tb_cari = new javax.swing.JButton();
@@ -43,27 +44,21 @@ public class CrudMahasiswa extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         cari = new javax.swing.JTextField();
         id_mahasiswa = new javax.swing.JTextField();
-        tb_simpan = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
         tb_hapus = new javax.swing.JButton();
         id_matkul = new javax.swing.JTextField();
         tb_exit = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
         id_pendaftaran = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
         TahunAjaran = new javax.swing.JTextField();
         Semester = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        tb_simpan = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jTextField4.setText("ID Mahasiswa");
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -101,20 +96,6 @@ public class CrudMahasiswa extends javax.swing.JFrame {
             }
         });
 
-        tb_simpan.setText("Simpan");
-        tb_simpan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tb_simpanActionPerformed(evt);
-            }
-        });
-
-        jTextField5.setText("ID Mata Kuliah");
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
-            }
-        });
-
         tb_hapus.setText("Hapus");
         tb_hapus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,23 +116,9 @@ public class CrudMahasiswa extends javax.swing.JFrame {
             }
         });
 
-        jTextField2.setText("ID Pendaftaran");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
         id_pendaftaran.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 id_pendaftaranActionPerformed(evt);
-            }
-        });
-
-        jTextField6.setText("Semester");
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
             }
         });
 
@@ -167,16 +134,26 @@ public class CrudMahasiswa extends javax.swing.JFrame {
             }
         });
 
-        jTextField7.setText("Tahun Ajaran");
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
-
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("MAHASISWA");
+
+        tb_simpan.setText("Simpan");
+        tb_simpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tb_simpanActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("ID PENDAFTARAN");
+
+        jLabel4.setText("ID MAHASISWA");
+
+        jLabel5.setText("SEMESTER");
+
+        jLabel6.setText("ID MATAKULIAH");
+
+        jLabel7.setText("TAHUN AJARAN");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,30 +163,36 @@ public class CrudMahasiswa extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField6)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Semester, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TahunAjaran, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)))
-                                .addGap(31, 31, 31)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(id_mahasiswa, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
-                                    .addComponent(id_pendaftaran, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(id_matkul)
-                                    .addComponent(jLabel1)))
+                                    .addComponent(jLabel5)
+                                    .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Semester, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TahunAjaran, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(241, 241, 241)
-                                .addComponent(jLabel2))))
+                                .addComponent(jLabel2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(id_mahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(85, 85, 85)
+                                        .addComponent(jLabel1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(118, 118, 118)
+                                        .addComponent(id_pendaftaran, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(id_matkul, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -238,31 +221,31 @@ public class CrudMahasiswa extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(id_pendaftaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(id_mahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(id_mahasiswa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(id_matkul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(id_matkul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Semester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Semester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TahunAjaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TahunAjaran, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tb_simpan)
                     .addComponent(tb_hapus)
                     .addComponent(tb_exit)
                     .addComponent(tb_cari)
                     .addComponent(cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tb_edit))
+                    .addComponent(tb_edit)
+                    .addComponent(tb_simpan))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(80, Short.MAX_VALUE))
@@ -270,10 +253,6 @@ public class CrudMahasiswa extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void tb_cariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_cariActionPerformed
         try {
@@ -284,36 +263,33 @@ public class CrudMahasiswa extends javax.swing.JFrame {
             pst.setString(2, cari.getText());
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                id_pendaftaran.setText(rs.getString("id_pendaftaran"));
-                id_mahasiswa.setText(rs.getString("id_mahasiswa"));
-                id_matkul.setText(rs.getString("id_matkul"));
-                Semester.setText(rs.getString("semester"));
-                TahunAjaran.setText(rs.getString("TahunAjaran"));
+                id_pendaftaran.setText(rs.getString("id_Pendaftaran"));
+                id_mahasiswa.setText(rs.getString("id_Mahasiswa"));
+                id_matkul.setText(rs.getString("id_Matkul"));
+                Semester.setText(rs.getString("Semester"));
+                TahunAjaran.setText(rs.getString("Tahun_Ajaran"));
                 JOptionPane.showMessageDialog(null, "Data matkul: "
-                    + cari.getText() + " ditemukan, Apakah Anda Ingin Mengedit atau Menghapus?");
+                        + cari.getText() + " ditemukan, Apakah Anda Ingin Mengedit atau Menghapus?");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Data tidak ditemukan");
             System.out.println(e.getMessage());
         }
         cari.requestFocus();
-        // TODO add your handling code here:
     }//GEN-LAST:event_tb_cariActionPerformed
 
     private void tb_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_editActionPerformed
         // TODO add your handling code here:
         try {
             java.sql.Connection conn = (java.sql.Connection) daftarmahasiswa.Koneksi.koneksiDB();
-            String sql = "UPDATE tbdata SET id_Mahasiswa=?, id_Matkul=?, Semester=?, TahunAjaran=?, WHERE id_Pendaftaran=?";
+            String sql = "UPDATE tbpendaftaran SET id_Mahasiswa=?, id_Matkul=?, Semester=?, Tahun_Ajaran=? WHERE id_Pendaftaran=?";
             java.sql.PreparedStatement pst = conn.prepareStatement(sql);
 
-            // Mengatur nilai untuk parameter
-            pst.setString(1, id_pendaftaran.getText());
-            pst.setString(2, id_mahasiswa.getText());
-            pst.setString(3, id_matkul.getText());
-            pst.setString(4, Semester.getText());
-            pst.setString(5, TahunAjaran.getText());
-            // Menjalankan perintah update
+            pst.setString(1, id_mahasiswa.getText());
+            pst.setString(2, id_matkul.getText());
+            pst.setString(3, Semester.getText());
+            pst.setString(4, TahunAjaran.getText());
+            pst.setString(5, id_pendaftaran.getText());
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Data berhasil diupdate");
@@ -327,31 +303,6 @@ public class CrudMahasiswa extends javax.swing.JFrame {
     private void id_mahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_mahasiswaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_id_mahasiswaActionPerformed
-
-    private void tb_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_simpanActionPerformed
-        // TODO add your handling code here:
-        try {
-            String sql = "INSERT INTO tbpendaftaran (id_Pendaftaran, id_Mahasiswa, id_Matkul, Semester, TahunAjaran ) VALUES (?, ?, ?, ?, ?)";
-            java.sql.Connection conn = (java.sql.Connection) daftarmahasiswa.Koneksi.koneksiDB();
-            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-
-            pst.setString(1, id_pendaftaran.getText());
-            pst.setString(2, id_mahasiswa.getText());
-            pst.setString(3, id_matkul.getText());
-            pst.setString(4, Semester.getText());
-            pst.setString(5, TahunAjaran.getText());
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
-            tampil_data();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Gagal disimpan");
-            System.out.println(e.getMessage());
-        }
-    }//GEN-LAST:event_tb_simpanActionPerformed
-
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
 
     private void tb_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_hapusActionPerformed
         // TODO add your handling code here:
@@ -382,10 +333,6 @@ public class CrudMahasiswa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_id_pendaftaranActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
-
     private void TahunAjaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TahunAjaranActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TahunAjaranActionPerformed
@@ -394,14 +341,26 @@ public class CrudMahasiswa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SemesterActionPerformed
 
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+    private void tb_simpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_simpanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField7ActionPerformed
+        try {
+            String sql = "INSERT INTO tbpendaftaran (id_pendaftaran, id_mahasiswa, id_matkul, semester, tahun_ajaran) VALUES (?, ?, ?, ?, ?)";
+            java.sql.Connection conn = (java.sql.Connection) daftarmahasiswa.Koneksi.koneksiDB();
+            java.sql.PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, id_pendaftaran.getText());
+            pst.setString(2, id_mahasiswa.getText());
+            pst.setString(3, id_matkul.getText());
+            pst.setString(4, Semester.getText());
+            pst.setString(5, TahunAjaran.getText());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
+            tampil_data();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Data gagal disimpan");
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_tb_simpanActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-    
     public void tampil_data() {
         DefaultTableModel tabel = new DefaultTableModel();
         tabel.addColumn("ID PENDAFTARAN");
@@ -426,6 +385,7 @@ public class CrudMahasiswa extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
+
     /**
      * @param args the command line arguments
      */
@@ -470,13 +430,13 @@ public class CrudMahasiswa extends javax.swing.JFrame {
     private javax.swing.JTextField id_pendaftaran;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JButton tb_cari;
     private javax.swing.JButton tb_edit;
     private javax.swing.JButton tb_exit;
