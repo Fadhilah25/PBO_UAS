@@ -53,10 +53,11 @@ public class MenuMain extends javax.swing.JFrame {
         Daftar = new javax.swing.JMenuItem();
         daftarmatkul = new javax.swing.JMenuItem();
         formpendaftaran = new javax.swing.JMenuItem();
+        jexit = new javax.swing.JMenuItem();
+        crud = new javax.swing.JMenu();
+        crudpendaftaran = new javax.swing.JMenuItem();
         Crud = new javax.swing.JMenuItem();
         crudmatkul = new javax.swing.JMenuItem();
-        crudpendaftaran = new javax.swing.JMenuItem();
-        jexit = new javax.swing.JMenuItem();
 
         menu1.setLabel("File");
         menu1.addActionListener(new java.awt.event.ActionListener() {
@@ -124,30 +125,6 @@ public class MenuMain extends javax.swing.JFrame {
         });
         jMenu1.add(formpendaftaran);
 
-        Crud.setText("Crud Mahasiswa");
-        Crud.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CrudActionPerformed(evt);
-            }
-        });
-        jMenu1.add(Crud);
-
-        crudmatkul.setText("Crud Matakuliah");
-        crudmatkul.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crudmatkulActionPerformed(evt);
-            }
-        });
-        jMenu1.add(crudmatkul);
-
-        crudpendaftaran.setText("Crud Pendaftaran");
-        crudpendaftaran.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crudpendaftaranActionPerformed(evt);
-            }
-        });
-        jMenu1.add(crudpendaftaran);
-
         jexit.setText("Keluar");
         jexit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,6 +134,34 @@ public class MenuMain extends javax.swing.JFrame {
         jMenu1.add(jexit);
 
         jMenuBar1.add(jMenu1);
+
+        crud.setText("CRUD");
+
+        crudpendaftaran.setText("Crud Pendaftaran");
+        crudpendaftaran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crudpendaftaranActionPerformed(evt);
+            }
+        });
+        crud.add(crudpendaftaran);
+
+        Crud.setText("Crud Mahasiswa");
+        Crud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CrudActionPerformed(evt);
+            }
+        });
+        crud.add(Crud);
+
+        crudmatkul.setText("Crud Matakuliah");
+        crudmatkul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crudmatkulActionPerformed(evt);
+            }
+        });
+        crud.add(crudmatkul);
+
+        jMenuBar1.add(crud);
 
         setJMenuBar(jMenuBar1);
 
@@ -223,12 +228,12 @@ public class MenuMain extends javax.swing.JFrame {
 
     private void crudpendaftaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudpendaftaranActionPerformed
         // TODO add your handling code here:
-        new CrudMahasiswa().setVisible(true);
+        new CrudMhs().setVisible(true);
     }//GEN-LAST:event_crudpendaftaranActionPerformed
 
     private void formpendaftaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formpendaftaranActionPerformed
         // TODO add your handling code here:
-        new FromMahasiswa().setVisible(true);
+        new FromMhs().setVisible(true);
     }//GEN-LAST:event_formpendaftaranActionPerformed
 
     /**
@@ -269,6 +274,7 @@ public class MenuMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Crud;
     private javax.swing.JMenuItem Daftar;
+    private javax.swing.JMenu crud;
     private javax.swing.JMenuItem crudmatkul;
     private javax.swing.JMenuItem crudpendaftaran;
     private javax.swing.JMenuItem daftarmatkul;
