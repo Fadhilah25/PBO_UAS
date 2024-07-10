@@ -17,9 +17,6 @@ import java.sql.SQLException;
 
 public class CrudMatkul extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CrudMatkul
-     */
     public CrudMatkul() {
         initComponents();
     }
@@ -48,6 +45,7 @@ public class CrudMatkul extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         tb_hapus = new javax.swing.JButton();
+        tampildata = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -126,6 +124,13 @@ public class CrudMatkul extends javax.swing.JFrame {
             }
         });
 
+        tampildata.setText("Tampilkan Data");
+        tampildata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tampildataActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -157,11 +162,13 @@ public class CrudMatkul extends javax.swing.JFrame {
                                 .addComponent(tb_hapus, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(tb_exit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tampildata)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tb_cari)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cari, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,7 +194,8 @@ public class CrudMatkul extends javax.swing.JFrame {
                     .addComponent(tb_cari)
                     .addComponent(cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tb_edit)
-                    .addComponent(tb_hapus))
+                    .addComponent(tb_hapus)
+                    .addComponent(tampildata))
                 .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(38, Short.MAX_VALUE))
@@ -227,8 +235,8 @@ public class CrudMatkul extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Data tidak ditemukan");
             System.out.println(e.getMessage());
         }
+        tampil_data();
         cari.requestFocus();
-        // TODO add your handling code here:
     }//GEN-LAST:event_tb_cariActionPerformed
 
     private void tb_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tb_editActionPerformed
@@ -294,6 +302,11 @@ public class CrudMatkul extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_tb_hapusActionPerformed
+
+    private void tampildataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tampildataActionPerformed
+        // TODO add your handling code here:
+        tampil_data();
+    }//GEN-LAST:event_tampildataActionPerformed
 
     public void tampil_data() {
         DefaultTableModel tabel = new DefaultTableModel();
@@ -368,6 +381,7 @@ public class CrudMatkul extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField nama_matkul;
     private javax.swing.JTextField sks;
+    private javax.swing.JButton tampildata;
     private javax.swing.JButton tb_cari;
     private javax.swing.JButton tb_edit;
     private javax.swing.JButton tb_exit;

@@ -15,17 +15,12 @@ import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-/**
- *
- * @author ADITYA
- */
+
 public class CrudDaftar extends javax.swing.JFrame {
 
     public String tgl_lahir;
 
-    /**
-     * Creates new form CrudDaftar
-     */
+    
     public CrudDaftar() {
         initComponents();
     }
@@ -63,6 +58,7 @@ public class CrudDaftar extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jurusan = new javax.swing.JComboBox<>();
         tb_edit = new javax.swing.JButton();
+        tampildata = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -149,6 +145,13 @@ public class CrudDaftar extends javax.swing.JFrame {
             }
         });
 
+        tampildata.setText("Tampilkan Data");
+        tampildata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tampildataActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -163,11 +166,13 @@ public class CrudDaftar extends javax.swing.JFrame {
                                 .addComponent(tb_simpan)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tb_edit)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tb_hapus)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tb_exit)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tampildata)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tb_cari)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cari))
@@ -240,7 +245,8 @@ public class CrudDaftar extends javax.swing.JFrame {
                     .addComponent(tb_exit)
                     .addComponent(tb_cari)
                     .addComponent(cari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tb_edit))
+                    .addComponent(tb_edit)
+                    .addComponent(tampildata))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
@@ -335,6 +341,7 @@ public class CrudDaftar extends javax.swing.JFrame {
             }
         } catch (Exception e) {
         }
+        tampil_data();
         cari.requestFocus();
     }//GEN-LAST:event_tb_cariActionPerformed
 
@@ -358,6 +365,11 @@ public class CrudDaftar extends javax.swing.JFrame {
     private void noActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_noActionPerformed
+
+    private void tampildataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tampildataActionPerformed
+        // TODO add your handling code here:
+        tampil_data();
+    }//GEN-LAST:event_tampildataActionPerformed
 
     public void tampil_data() {
         DefaultTableModel tabel = new DefaultTableModel();
@@ -443,6 +455,7 @@ public class CrudDaftar extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jurusan;
     private javax.swing.JTextField nama;
     private javax.swing.JTextField no;
+    private javax.swing.JButton tampildata;
     private javax.swing.JButton tb_cari;
     private javax.swing.JButton tb_edit;
     private javax.swing.JButton tb_exit;
