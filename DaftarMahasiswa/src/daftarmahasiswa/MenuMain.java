@@ -55,9 +55,9 @@ public class MenuMain extends javax.swing.JFrame {
         formpendaftaran = new javax.swing.JMenuItem();
         jexit = new javax.swing.JMenuItem();
         crud = new javax.swing.JMenu();
-        crudpendaftaran = new javax.swing.JMenuItem();
         Crud = new javax.swing.JMenuItem();
         crudmatkul = new javax.swing.JMenuItem();
+        crudpendaftaran = new javax.swing.JMenuItem();
 
         menu1.setLabel("File");
         menu1.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +101,7 @@ public class MenuMain extends javax.swing.JFrame {
 
         jMenu1.setText("Menu Utama");
 
-        Daftar.setText("Pendaftaran Mahasiswa");
+        Daftar.setText("Entri Data Mahasiswa");
         Daftar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DaftarActionPerformed(evt);
@@ -137,15 +137,7 @@ public class MenuMain extends javax.swing.JFrame {
 
         crud.setText("CRUD");
 
-        crudpendaftaran.setText("Crud Pendaftaran");
-        crudpendaftaran.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crudpendaftaranActionPerformed(evt);
-            }
-        });
-        crud.add(crudpendaftaran);
-
-        Crud.setText("Crud Mahasiswa");
+        Crud.setText("Entri data Mahasiswa");
         Crud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CrudActionPerformed(evt);
@@ -160,6 +152,14 @@ public class MenuMain extends javax.swing.JFrame {
             }
         });
         crud.add(crudmatkul);
+
+        crudpendaftaran.setText("Crud Pendaftaran");
+        crudpendaftaran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crudpendaftaranActionPerformed(evt);
+            }
+        });
+        crud.add(crudpendaftaran);
 
         jMenuBar1.add(crud);
 
